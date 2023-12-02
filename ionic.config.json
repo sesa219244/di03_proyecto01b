@@ -1,0 +1,7 @@
+{
+  "name": "DI03_Proyecto01",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
