@@ -1,10 +1,5 @@
+import { GestionPersonasService } from './../../services/gestion-personas.service';
 import { Component } from '@angular/core';
-
-export interface IPersona {
-  id: string;
-  nombre: string;
-  apellido: string;
-}
 
 @Component({
   selector: 'app-home',
@@ -14,6 +9,6 @@ export interface IPersona {
 export class HomePage {
 
   //gestionPersonas: GestionPersonasService = new GestionPersonasService();
-  //constructor(private gestionPersonas: GestionPersonasService) {}
+  constructor(public gestionPersonas: GestionPersonasService) {}
 
 }

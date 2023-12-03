@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GestionPersonasService } from 'src/app/services/gestion-personas.service';
 
 @Component({
   selector: 'app-insertar',
@@ -11,7 +12,7 @@ export class InsertarPage implements OnInit {
   nombre: string ="";
   apellido: string ="";
 
-  constructor() { }
+  constructor(private insertarPersonas: GestionPersonasService) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,7 @@ export class InsertarPage implements OnInit {
   onClick() {
 
     // Insertar
+    this.insertarPersonas.insertarPersona(this.id, this.nombre, this.apellido);
   }
 
 }
