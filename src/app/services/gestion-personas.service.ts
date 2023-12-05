@@ -38,16 +38,18 @@ export class GestionPersonasService {
   borrarPersona(id: string) {
 
     // Busca la persona con el id dado
-    let personaEncontrada: IPersona = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
+    let personaEncontrada: IPersona | undefined = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
     console.log(personaEncontrada);
 
     // Busca el índice de la persona
-    //let indice: number = this.personas.indexOf(personaEncontrada);
-    //console.log(indice);
+    let indice: number = 0;
+    if (personaEncontrada == undefined) {} 
+    else {indice = this.personas.indexOf(personaEncontrada);}
+    console.log(indice);
 
     // Borra la persona con el índice obtenido
-    //this.personas.splice(indice, 1);
-    //console.log(this.personas);
+    this.personas.splice(indice, 1);
+    console.log(this.personas);
 
   }
 
