@@ -57,8 +57,10 @@ export class HomePage {
         },
         {
           text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
+          handler: (data) => {
+            console.log(data);
+            console.log(data.ID);
+            this.gestionPersonas.modificarPersona(data.ID, data.Nombre, data.Apellido);
           }
         }
       ]

@@ -51,7 +51,17 @@ export class GestionPersonasService {
     if (indice == -1) {}
     else {this.personas.splice(indice, 1)};
     console.log(this.personas);
+  }
 
+  modificarPersona(id: string, nombre: string, apellido: string) {
+    let personaEncontrada: IPersona | undefined = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
+    let indice: number = -1;
+    if (personaEncontrada == undefined) {}
+    else {
+      indice = this.personas.indexOf(personaEncontrada)
+    };
+    this.personas[indice].nombre = nombre;
+    this.personas[indice].apellido = apellido;
   }
 
 }
