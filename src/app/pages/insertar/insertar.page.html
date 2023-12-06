@@ -1,20 +1,30 @@
-<app-page-header titulo="Insertar"></app-page-header>
+<!--<app-page-header titulo="Insertar"></app-page-header>-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button defaultHref="\" mode="ios" (click)="modelo.dismiss()">Atrás</ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-uppercase">Insertar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 
 <ion-content>
   <form #insertForm="ngForm">
     <ion-item>
-      <ion-label>ID</ion-label>
-      <ion-input name="id" placeholder="ID" [(ngModel)]="id" required></ion-input>
+      <!--<ion-label>ID</ion-label>-->
+      <ion-input name="id" placeholder="ID" label="ID"[(ngModel)]="id" required></ion-input>
     </ion-item>
      
     <ion-item>
-      <ion-label>Nombre</ion-label>
-      <ion-input name="nombre" placeholder="nombre" [(ngModel)]="nombre" required></ion-input>
+      <!--<ion-label>Nombre</ion-label>-->
+      <ion-input name="nombre" placeholder="nombre" label="Nombre" [(ngModel)]="nombre" required></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-label>Apellido</ion-label>
-      <ion-input name="apellido" placeholder="apellido" [(ngModel)]="apellido" required></ion-input>
+      <!--<ion-label>Apellido</ion-label>-->
+      <ion-input name="apellido" placeholder="apellido" label="Apellido" [(ngModel)]="apellido" required></ion-input>
     </ion-item>
   
     <ion-button [disabled]="insertForm.invalid" (click)="onClick()">INSERTAR</ion-button>

@@ -1,6 +1,7 @@
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { GestionPersonasService, IPersona } from './../../services/gestion-personas.service';
 import { Component } from '@angular/core';
+import { InsertarPage } from '../insertar/insertar.page';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  alertController: any;
 
   //gestionPersonas: GestionPersonasService = new GestionPersonasService();
-  constructor(public gestionPersonas: GestionPersonasService, private alerta: AlertController) {}
+  constructor(public gestionPersonas: GestionPersonasService, 
+    private alerta: AlertController, 
+    private modelo: ModalController) {}
 
   borrar(id: string) {
     this.gestionPersonas.borrarPersona(id);
@@ -65,8 +67,15 @@ export class HomePage {
         }
       ]
     });
-
     await alert.present();
+  }
+
+  async presentarModal() {
+    const modal = await this.modelo.create({
+      backdropDismiss: false,
+      component: InsertarPage,
+    });
+    return await modal.present();
   }
 
 }
