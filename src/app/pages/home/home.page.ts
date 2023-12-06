@@ -13,7 +13,7 @@ export class HomePage {
   //gestionPersonas: GestionPersonasService = new GestionPersonasService();
   constructor(public gestionPersonas: GestionPersonasService, 
     private alerta: AlertController, 
-    private modelo: ModalController) {}
+    private modal: ModalController) {}
 
   borrar(id: string) {
     this.gestionPersonas.borrarPersona(id);
@@ -25,7 +25,7 @@ export class HomePage {
 
   async presentarAlerta(persona: IPersona) {
     const alert = await this.alerta.create({
-      //cssClass: 'my-custom-class',
+      backdropDismiss: false, // No permite hacer nada mas hasta contestar la alerta 
       header: 'Modificar',
       message: 'Actualiza los valores',
       inputs: [
@@ -71,7 +71,7 @@ export class HomePage {
   }
 
   async presentarModal() {
-    const modal = await this.modelo.create({
+    const modal = await this.modal.create({
       backdropDismiss: false,
       component: InsertarPage,
     });

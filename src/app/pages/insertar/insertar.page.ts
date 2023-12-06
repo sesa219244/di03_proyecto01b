@@ -14,7 +14,7 @@ export class InsertarPage implements OnInit {
   apellido: string ="";
 
   constructor(private insertarPersonas: GestionPersonasService,
-    public modelo: ModalController) {}
+    public modal_: ModalController) {}
 
   ngOnInit() {
   }
@@ -25,7 +25,7 @@ export class InsertarPage implements OnInit {
     this.insertarPersonas.insertarPersona(this.id, this.nombre, this.apellido);
 
     // dismiss
-    this.modelo.dismiss();
+    this.modal_.dismiss();
   }
 
 }
