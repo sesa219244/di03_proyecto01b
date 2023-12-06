@@ -25,7 +25,7 @@ export class GestionPersonasService {
     datosFichero = this.leerFichero.get<IPersona[]>("/assets/datos/personas.json");
     datosFichero.subscribe(datos => {
       console.log(datos);
-      this.personas.push(...datos);
+      this.personas.push(...datos)
     });
   }
  
@@ -40,33 +40,26 @@ export class GestionPersonasService {
     let nuevaPersona: IPersona = {id: id, nombre: nombre, apellido: apellido};
 
     // La insertamos
-    if (this.personas == undefined) {}
-    else {
       this.personas.push(nuevaPersona);
       console.log(this.personas)
-    };
   }
 
   borrarPersona(id: string) {
 
     // Busca la persona con el id dado
-    let personaEncontrada: IPersona | undefined;
-    if (this.personas == undefined) {}
-    else {
-      personaEncontrada = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
-      console.log(personaEncontrada)
-    };
+    let personaEncontrada: IPersona | undefined = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
+    console.log(personaEncontrada)
 
     // Busca el índice de la persona
     let indice: number = -1;
-    if (this.personas == undefined || personaEncontrada == undefined) {}
+    if (personaEncontrada == undefined) {}
     else {
       indice = this.personas.indexOf(personaEncontrada)
     };
     console.log(indice);
 
     // Borra la persona con el índice obtenido
-    if (this.personas == undefined || indice == -1) {}
+    if (indice == -1) {}
     else {
       this.personas.splice(indice, 1)
     };
@@ -74,17 +67,13 @@ export class GestionPersonasService {
   }
 
   modificarPersona(id: string, nombre: string, apellido: string) {
-    if (this.personas == undefined) {}
+    let personaEncontrada: IPersona | undefined = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
+    let indice: number = -1;
+    if (personaEncontrada == undefined) {}
     else {
-      let personaEncontrada: IPersona | undefined = this.personas.find(function(cadaPersona) { return cadaPersona.id == id });
-      let indice: number = -1;
-      if (personaEncontrada == undefined) {}
-      else {
-        indice = this.personas.indexOf(personaEncontrada)
-      };
-      this.personas[indice].nombre = nombre;
-      this.personas[indice].apellido = apellido
+      indice = this.personas.indexOf(personaEncontrada)
     };
+      this.personas[indice].nombre = nombre;
+      this.personas[indice].apellido = apellido;
   }
-
 }
