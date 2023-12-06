@@ -42,13 +42,14 @@ export class GestionPersonasService {
     console.log(personaEncontrada);
 
     // Busca el índice de la persona
-    let indice: number = 0;
-    if (personaEncontrada == undefined) {} 
-    else {indice = this.personas.indexOf(personaEncontrada);}
+    let indice: number = -1;
+    if (personaEncontrada == undefined) {}
+    else {indice = this.personas.indexOf(personaEncontrada)};
     console.log(indice);
 
     // Borra la persona con el índice obtenido
-    this.personas.splice(indice, 1);
+    if (indice == -1) {}
+    else {this.personas.splice(indice, 1)};
     console.log(this.personas);
 
   }
