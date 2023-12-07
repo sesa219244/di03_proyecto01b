@@ -1,5 +1,6 @@
+import { IPersona } from './../../interfaces/mis-interfaces';
 import { AlertController, ModalController } from '@ionic/angular';
-import { GestionPersonasService, IPersona } from './../../services/gestion-personas.service';
+import { GestionPersonasService } from './../../services/gestion-personas.service';
 import { Component } from '@angular/core';
 import { InsertarPage } from '../insertar/insertar.page';
 
