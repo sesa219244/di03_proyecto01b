@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'insertar',
     loadChildren: () => import('./pages/insertar/insertar.module').then( m => m.InsertarPageModule)
   },
+  {
+    path: 'other',
+    loadChildren: () => import('./pages/other/other.module').then( m => m.OtherPageModule)
+  },
 ];
 
 @NgModule({
