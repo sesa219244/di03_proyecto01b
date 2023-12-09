@@ -65,13 +65,13 @@ export class OtherPage {
 
 constructor() {
   console.log(this.datos);
-  console.log(this.datos.page);
-  let numero:number = this.datos.page;
-  let objeto: Support = this.datos.support;
-  console.log(objeto);
-  console.log(this.datos.data);
-  console.log(this.datos.data[2]);
-  console.log(this.datos.data[2].first_name);
+  //console.log(this.datos.page);
+  //let numero:number = this.datos.page;
+  //let objeto: Support = this.datos.support;
+  //console.log(objeto);
+  //console.log(this.datos.data);
+  //console.log(this.datos.data[2]);
+  //console.log(this.datos.data[2].first_name);
 }
 
 }
