@@ -1,3 +1,4 @@
+import { GestionStorageService } from './gestion-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -17,8 +18,22 @@ export class GestionPersonasService {
 
   private personas: IPersona[] = [];
 
-  constructor(private leerFichero: HttpClient) {
-    this.getPersonasFichero();
+  constructor(private leerFichero: HttpClient, private gestionAlmacen: GestionStorageService) {
+    //this.getPersonasFichero();
+    this.obtenerDatos();
+    /* Opción para meter los datos del storage en el constructor a través fde una Promise
+    let datosPromesa: Promise<IPersona[]> = gestionAlmacen.getObject("personas");
+    datosPromesa.then(datos => {
+      console.log(datos);
+      this.personas.push(...datos);
+    });
+    */
+  }
+
+  // Método para meter los datos del Storage sin tener que hacer una Promise en el constructor
+  async obtenerDatos() {
+    this.personas = await this.gestionAlmacen.getObject("personas");
+    console.log(this.personas);
   }
 
   getPersonasFichero() {
@@ -26,7 +41,8 @@ export class GestionPersonasService {
     datosFichero = this.leerFichero.get<IPersona[]>("/assets/datos/personas.json");
     datosFichero.subscribe(datos => {
       console.log(datos);
-      this.personas.push(...datos)
+      this.personas.push(...datos);
+      this.gestionAlmacen.setObject("personas", this.personas); // la actualizo en el Storage
     });
   }
  
@@ -42,7 +58,8 @@ export class GestionPersonasService {
 
     // La insertamos
       this.personas.push(nuevaPersona);
-      console.log(this.personas)
+      this.gestionAlmacen.setObject("personas", this.personas); // la actualizo en el Storage
+      console.log(this.personas);
   }
 
   borrarPersona(id: string) {
@@ -55,14 +72,15 @@ export class GestionPersonasService {
     let indice: number = -1;
     if (personaEncontrada == undefined) {}
     else {
-      indice = this.personas.indexOf(personaEncontrada)
+      indice = this.personas.indexOf(personaEncontrada);
     };
     console.log(indice);
 
     // Borra la persona con el índice obtenido
     if (indice == -1) {}
     else {
-      this.personas.splice(indice, 1)
+      this.personas.splice(indice, 1);
+      this.gestionAlmacen.setObject("personas", this.personas); // la actualizo en el Storage
     };
     console.log(this.personas);
   }
@@ -76,5 +94,7 @@ export class GestionPersonasService {
     };
       this.personas[indice].nombre = nombre;
       this.personas[indice].apellido = apellido;
+
+      this.gestionAlmacen.setObject("personas", this.personas); // la actualizo en el Storage
   }
 }
