@@ -2,13 +2,7 @@ import { GestionStorageService } from './gestion-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPersona } from '../interfaces/mis-interfaces';
-
-/*export interface IPersona {
-  id: string;
-  nombre: string;
-  apellido: string;
-}*/
+import { IDatos, IPersona } from '../interfaces/mis-interfaces';
 
 @Injectable({
   providedIn: 'root'

@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'other',
     loadChildren: () => import('./pages/other/other.module').then( m => m.OtherPageModule)
   },
+  {
+    path: 'consultas-rest',
+    loadChildren: () => import('./pages/consultas-rest/consultas-rest.module').then( m => m.ConsultasRestPageModule)
+  },
 ];
 
 @NgModule({
